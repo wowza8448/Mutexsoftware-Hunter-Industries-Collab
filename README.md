@@ -1,1 +1,1 @@
-# Mutexsoftware-Hunter-Industries-Collab.
+# Mutexsoftware-Hunter-Industries-Collab
