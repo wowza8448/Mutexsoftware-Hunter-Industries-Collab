@@ -1,3 +1,18 @@
+#container {
+    padding: 20px;
+	display: flex;
+}
+#GUID-container
+{
+	margin-left: 30px;}
+#PUID-container
+{
+	margin-left: 30px;}
+#GUID {
+	width: 500px; !important }
+#PUID {
+	width: 500px; !important }
+
 meta.foundation-version {
   font-family: "/5.5.3/"; }
 
@@ -115,7 +130,8 @@ img {
 
 textarea {
   height: auto;
-  min-height: 50px; }
+  min-height: 50px;
+  }
 
 select {
   width: 100%; }
