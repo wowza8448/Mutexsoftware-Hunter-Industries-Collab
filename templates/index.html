@@ -46,7 +46,8 @@
       <a href="sections.html">Sections</a>
     </nav>
 		
-				
+			
+		
 		<script type="text/javascript">
 		
 		function get_ID()
@@ -59,12 +60,12 @@
 
 		
 		function show_ID()
-		{
-			$.get("/pass_new", function(data){$('#id_show').html( data);})
-		$('#id_show').show();
-		};
-
-
+		{	
+			$.get("/pass_new", function(data){
+				$('#id_show').html(data);});
+			$('#id_show').show();
+		}
+		
 		function get_GUID()
 		{$.post("/", {"GUID":$('#GUID').val()})	
 			Id_got = document.getElementById("ID").value;
