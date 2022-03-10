@@ -46,8 +46,7 @@
       <a href="sections.html">Sections</a>
     </nav>
 		
-			
-		
+				
 		<script type="text/javascript">
 		
 		function get_ID()
@@ -61,9 +60,11 @@
 		
 		function show_ID()
 		{
+			$.get("/pass_new", function(data){$('#id_show').html( data);})
 		$('#id_show').show();
-		}
-		
+		};
+
+
 		function get_GUID()
 		{$.post("/", {"GUID":$('#GUID').val()})	
 			Id_got = document.getElementById("ID").value;
@@ -88,7 +89,7 @@
 			<button id="search_PUID" type="button" onclick="get_GUID();">Search GUID</button>
 			</form></div> -->
 		</div>
-		<div id="id_show"  style="display:none"><p>Data called {{pass_back}}</p></div>
+		<center><div id="id_show"  style="display:none"></div></center>
 	
 	
 	<footer>
