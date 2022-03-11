@@ -21,12 +21,14 @@ def index():
 
 @app.route('/get_id', methods=['GET', 'POST'])
 def get_id():
+    print("Changes 2")
     if request.method == 'POST':
+        session['pass_back'] = ""
         global_db_con = get_db()
         id = request.form['ID']
         print("Obtained id: " + id)
         cur = global_db_con.cursor()
-        sql = """SELECT * FROM keys;"""
+        sql = f"""SELECT * FROM keys WHERE id = '{id}';"""
         cur.execute(sql)
         match = cur.fetchall()
         for row in match:
@@ -34,11 +36,13 @@ def get_id():
         for row in match:
             if id == row[0]:
                 print("Match was found")
+                print(row[1])
                 new = row[1]
                 session['pass_back'] = new
+                cur.close()
                 return redirect(url_for('pass_new', data = new))
-            session['pass_back'] = "No key found"
-            return redirect(url_for('pass_new', data = "No key found"))
+            #session['pass_back'] = "No key found"
+        return redirect(url_for('pass_new', data = "No key found"))
         print("Match was never found")
         return "Error no match found"
 
