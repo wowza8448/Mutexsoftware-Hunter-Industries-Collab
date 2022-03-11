@@ -31,6 +31,7 @@ def get_id():
         match = cur.fetchall()
         for row in match:
             print(row[0])
+        for row in match:
             if id == row[0]:
                 print("Match was found")
                 new = row[1]
