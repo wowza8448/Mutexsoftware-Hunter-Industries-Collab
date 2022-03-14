@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, redirect, url_for, g, jsonify, session
-#from flask_json import FlaskJSON, JsonError, json_response, as_json
 
 import sys
 import datetime
@@ -8,10 +7,10 @@ import traceback
 
 from db_con import get_db_instance, get_db
 
-#global_db_con = get_db()
+
 
 app = Flask(__name__)
-#FlaskJSON(app)
+
 
 app.secret_key = "super secret key"
 
