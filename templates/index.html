@@ -51,19 +51,12 @@
 		
 
 		function get_ID()
-{$.post("/get_id", {"ID":$('#ID').val()}, function(data){$('#id_show').html(data); $('#id_show').show();console.log(data);});
+		{$.post("/get_id", {"ID":$('#ID').val()}, function(data){$('#id_show').html(data); $('#id_show').show();console.log(data);});
 		}
 		
 		function get_GUID()
-		{$.post("/get_guid", {"GUID":$('#GUID').val()})	
-			show_guid();
+		{$.post("/get_guid", {"GUID":$('#GUID').val()}, function(data){$('#guid_show').html(data); $('#guid_show').show();console.log(data);});
 		}
-		
-		function show_guid()
-		{
-		$.get("/second_pass", function(data){console.log("Got");});
-		}
-
 		
 		</script>
 		
@@ -82,6 +75,7 @@
 			</form></div> -->
 		</div>
 		<center><div id="id_show"  style="display:none"></div></center>
+		<center><div id="guid_show"  style="display:none"></div></center>
 	
 	
 	<footer>
