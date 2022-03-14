@@ -40,17 +40,12 @@ def get_id():
                 session['pass_back'] = data
                 cur.close()
                 return data
+            else:
+                return "Error Invalid Key"
         session['pass_back'] = "No key found"
         print("Match was never found")
+        return "Error key invalid"
         
-
-@app.route('/pass_new')
-def pass_new():
-    if request.method == 'GET':
-        id_data = session['pass_back']
-        return id_data
-    else:
-        return "Get not called"
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80)
