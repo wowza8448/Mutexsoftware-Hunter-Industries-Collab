@@ -9,7 +9,7 @@
 <br>
 <br>
 <br>
-{{pass_back}}
+{{data}}
 <header>
     <div class="inner">
         <div id="menu-icon" class="c-hamburger c-hamburger--htx">
@@ -50,27 +50,19 @@
 		
 		<script type="text/javascript">
 		
-		function get_ID()
-		{$.post("/get_id", {"ID":$('#ID').val()})	
-			Id_got = document.getElementById("ID").value;
-			clicked = " Site ID";
-			show_ID();
-			alert(Id_got + ": got from" + clicked);
-		};
 
-		
-		function show_ID()
-		{	
-			$.get("/pass_new", function(data){
-				$('#id_show').html(data);});
-			$('#id_show').show();
+		function get_ID()
+{$.post("/get_id", {"ID":$('#ID').val()}, function(data){$('#id_show').html(data); $('#id_show').show();console.log(data);});
 		}
 		
 		function get_GUID()
-		{$.post("/", {"GUID":$('#GUID').val()})	
-			Id_got = document.getElementById("ID").value;
-			clicked = " GUID";
-			alert(Id_got + ": got from" + clicked);
+		{$.post("/get_guid", {"GUID":$('#GUID').val()})	
+			show_guid();
+		}
+		
+		function show_guid()
+		{
+		$.get("/second_pass", function(data){console.log("Got");});
 		}
 
 		
