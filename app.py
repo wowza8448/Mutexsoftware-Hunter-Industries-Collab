@@ -40,8 +40,10 @@ def get_id():
                 session['pass_back'] = data
                 cur.close()
                 return data
+            else:
+                return "Error key not found"
         session['pass_back'] = "No key found"
-        print("Match was never found")
+        return "Error invalid key"
         
 
 @app.route('/pass_new')
