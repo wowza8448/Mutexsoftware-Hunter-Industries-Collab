@@ -23,7 +23,6 @@ def get_id():
     if request.method == 'POST':
         global_db_con = get_db()
         id = request.form['ID']
-        session['pass_back'] = "NULL"
         print("Obtained id: " + id)
         cur = global_db_con.cursor()
         sql = f"""SELECT * FROM keys WHERE id = '{id}';"""
@@ -36,14 +35,11 @@ def get_id():
                 print("Match was found")
                 print(row[1])
                 data = row[1]
-                session['pass_back'] = data
                 cur.close()
                 return data
             else:
-                return "Error Invalid Key"
-        session['pass_back'] = "No key found"
-        print("Match was never found")
-        return "Error key invalid"
+                return "Error key not found"
+        return "Error invalid key"
         
 
 if __name__ == '__main__':
