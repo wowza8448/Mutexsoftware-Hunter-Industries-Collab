@@ -19,7 +19,7 @@ app.secret_key = "super secret key"
 def index():
     return render_template('index.html')
 
-@app.route('/get_id', methods=['POST', 'GET'])
+@app.route('/api/SensorReadings/GetSensorZoneReadingsForSiteId', methods=['POST', 'GET'])
 def get_id():
     if request.method == 'POST':
         global_db_con = get_db()

@@ -52,7 +52,7 @@
 		
 
 		function get_ID()
-{$.post("/get_id", {"ID":$('#ID').val()}, function(data){$('#id_show').html(data); $('#id_show').show();console.log(data);});
+{$.post("/api/SensorReadings/GetSensorZoneReadingsForSiteId", {"ID":$('#ID').val()}, function(data){$('#id_show').html(data); $('#id_show').show();console.log(data);});
 		}
 		
 		function get_GUID()
@@ -65,7 +65,13 @@
 		$.get("/second_pass", function(data){console.log("Got");});
 		}
 
-		
+		function toggle()
+		{
+			var x = document.getElementById("checkDiv");
+			if (x.innerHTML == "On")
+			{ x.innerHTML = "Off";}
+			else { x.innerHTML = "On";}
+		}
 		</script>
 		
 		
@@ -83,7 +89,8 @@
 			</form></div> -->
 		</div>
 		<center><div id="id_show"  style="display:none"></div></center>
-	
+		<button onclick="toggle()">Toggle</button>
+		<div id="checkDiv">On</div>
 	
 	<footer>
         <div class="inner">
