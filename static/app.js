@@ -28,4 +28,7 @@ $(document).ready(function(){ $('#menu-icon').click(function(){ console.log('tex
 		 	}, scroll_top_duration
 		);
 	});
+
+	//$('#ID').on("input", siteIDValidation);
 });
+
