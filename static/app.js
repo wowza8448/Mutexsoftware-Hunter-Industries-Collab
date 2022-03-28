@@ -28,4 +28,22 @@ $(document).ready(function(){ $('#menu-icon').click(function(){ console.log('tex
 		 	}, scroll_top_duration
 		);
 	});
+
+	$('#ID').on("input", siteIDValidation);
 });
+
+
+function siteIDValidation(){
+	console.log("Validating.");
+	userString = $('#ID').val();
+	var siteIDRegEx = new RegExp('^[0-9a-f]{80}$');
+	if (siteIDRegEx.test(userString)){
+		console.log("Valid Reg");
+		$('#validMessage').text("Valid Site ID!");
+	}
+	else{
+		console.log("Invalid Reg");
+		$('#validMessage').text("The Site ID is currently invalid. Please ensure the ID is 80 characters, only 0-9 and lowercase a-e.");
+	}
+}
+
