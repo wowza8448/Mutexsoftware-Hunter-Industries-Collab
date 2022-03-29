@@ -51,35 +51,7 @@ M543,28.2h2.3l3.5,5.5
     <nav>
 <a href="">Home</a>
 <a href="">TBD</a>
-    </nav>
-	<script type="text/javascript">
-                
-
-                function get_ID()
-{$.post("/api/SensorReadings/GetSensorZoneReadingsForSiteId", {"ID":$('#ID').val()}, function(data){$('#id_show').
-html(data); $('#id_show').show();console.log(data);});
-                }
-                
-                function get_GUID()
-                {$.post("/get_guid", {"GUID":$('#GUID').val()}) 
-                        show_guid();
-                }
-                
-                function show_guid()
-                {
-                $.get("/second_pass", function(data){console.log("Got");});
-                }
-
-                function toggle()
-                {
-                        var x = document.getElementById("checkDiv");
-                        if (x.innerHTML == "On")
-                        { x.innerHTML = "Off";}
-                        else { x.innerHTML = "On";}
-                }
-                </script>
-
-
+    </nav>	
 
 <div id="container">
 <div id="GUID-container">
@@ -100,10 +72,9 @@ html(data); $('#id_show').show();console.log(data);});
 <div class="inner">
 <p>Copyright ©
 <script type="text/javascript">
-                document.write(new Date().getFullYear());
-                </script> Hunter Industries. All rights reserved.</p>
-<p><a href="tel:7605917383">(1) 760-591-7383</a> | <a href="http://www.hunterindustries.com/">www.hunt
-erindustries.com</a></p>
+    document.write(new Date().getFullYear());
+</script> Hunter Industries. All rights reserved.</p>
+<p><a href="tel:7605917383">(1) 760-591-7383</a> | <a href="http://www.hunterindustries.com/">www.hunterindustries.com</a></p>
 </div>
 </footer>
 </body>

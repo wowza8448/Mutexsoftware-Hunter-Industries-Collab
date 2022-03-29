@@ -1,4 +1,9 @@
-$(document).ready(function(){ $('#menu-icon').click(function(){ console.log('text0'); $('body').toggleClass('menu-open')
+var submitBool = 0;
+
+$(document).ready(function(){
+	$('#menu-icon').click(function(){
+		console.log('text0');
+	  	$('body').toggleClass('menu-open') 
 	});
 	//scroll animation
 	$('a').click(function(){ $('html, body').animate({ scrollTop: $( $.attr(this, 'href') ).offset().top - 60
@@ -32,6 +37,24 @@ $(document).ready(function(){ $('#menu-icon').click(function(){ console.log('tex
 	$('#ID').on("input", siteIDValidation);
 });
 
+function get_ID(){
+	if (submitBool == 1){
+		$.post("/api/SensorReadings/GetSensorZoneReadingsForSiteId", {"ID":$('#ID').val()}, function(data){$('#id_show').html(data); $('#id_show').show();console.log(data);});
+	}
+	else {
+		alert("Invalid Length or Characters");
+	}
+}  
+
+function get_GUID()
+{$.post("/get_guid", {"GUID":$('#GUID').val()}) 
+		show_guid();
+}
+
+function show_guid()
+{
+$.get("/second_pass", function(data){console.log("Got");});
+}
 
 function siteIDValidation(){
 	console.log("Validating.");
@@ -39,11 +62,12 @@ function siteIDValidation(){
 	var siteIDRegEx = new RegExp('^[0-9a-f]{80}$');
 	if (siteIDRegEx.test(userString)){
 		console.log("Valid Reg");
-		$('#validMessage').text("Valid Site ID!");
+		submitBool = 1;
+		//$('#validMessage').text("Valid Site ID!");
 	}
 	else{
 		console.log("Invalid Reg");
-		$('#validMessage').text("The Site ID is currently invalid. Please ensure the ID is 80 characters, only 0-9 and lowercase a-e.");
+		submitBool = 0;
+		//$('#validMessage').text("The Site ID is currently invalid. Please ensure the ID is 80 characters, only 0-9 and lowercase a-e.");
 	}
 }
-
