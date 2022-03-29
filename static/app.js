@@ -1,3 +1,4 @@
+
 var submitBool = 0;
 
 $(document).ready(function(){
@@ -5,11 +6,15 @@ $(document).ready(function(){
 		console.log('text0');
 	  	$('body').toggleClass('menu-open') 
 	});
+
 	//scroll animation
-	$('a').click(function(){ $('html, body').animate({ scrollTop: $( $.attr(this, 'href') ).offset().top - 60
+	$('a').click(function(){
+	    $('html, body').animate({
+	        scrollTop: $( $.attr(this, 'href') ).offset().top - 60
 	    }, 500);
 	    return false;
 	});
+
 	// browser window scroll (in pixels) after which the "back to top" link is shown
 	var offset = 300,
 		//browser window scroll (in pixels) after which the "back to top" link opacity is reduced
@@ -18,24 +23,32 @@ $(document).ready(function(){
 		scroll_top_duration = 700,
 		//grab the "back to top" link
 		$back_to_top = $('.cd-top');
+
 	//hide or show the "back to top" link
-	$(window).scroll(function(){ ( $(this).scrollTop() > offset ) ? $back_to_top.addClass('cd-is-visible') : $back_to_top.removeClass('cd-is-visible cd-fade-out'); if( 
-		$(this).scrollTop() > offset_opacity ) {
+	$(window).scroll(function(){
+		( $(this).scrollTop() > offset ) ? $back_to_top.addClass('cd-is-visible') : $back_to_top.removeClass('cd-is-visible cd-fade-out');
+		if( $(this).scrollTop() > offset_opacity ) { 
 			$back_to_top.addClass('cd-fade-out');
 		}
-		if ($(window).scrollTop() == $(document).height() - $(window).height()) { var x = $('footer').outerHeight(true); $back_to_top.css("margin-bottom", x+"px");
+		if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+			var x = $('footer').outerHeight(true); 
+			$back_to_top.css("margin-bottom", x+"px");
 		}
-		else{ $back_to_top.css("margin-bottom", "0px");
+		else{
+			$back_to_top.css("margin-bottom", "0px");
 		}
 	});
+
 	//smooth scroll to top
-	$back_to_top.on('click', function(event){ event.preventDefault(); $('body,html').animate({ scrollTop: 0 ,
+	$back_to_top.on('click', function(event){
+		event.preventDefault();
+		$('body,html').animate({
+			scrollTop: 0 ,
 		 	}, scroll_top_duration
 		);
 	});
-
-	$('#ID').on("input", siteIDValidation);
 });
+
 
 function get_ID(){
 	if (submitBool == 1){
@@ -46,15 +59,6 @@ function get_ID(){
 	}
 }  
 
-function get_GUID()
-{$.post("/get_guid", {"GUID":$('#GUID').val()}) 
-		show_guid();
-}
-
-function show_guid()
-{
-$.get("/second_pass", function(data){console.log("Got");});
-}
 
 function siteIDValidation(){
 	console.log("Validating.");
@@ -71,3 +75,4 @@ function siteIDValidation(){
 		//$('#validMessage').text("The Site ID is currently invalid. Please ensure the ID is 80 characters, only 0-9 and lowercase a-e.");
 	}
 }
+
