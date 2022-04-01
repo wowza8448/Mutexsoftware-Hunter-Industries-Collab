@@ -64,8 +64,16 @@ function get_ID(){
 	else {
 		alert("Invalid Length or Characters");
 	}
-}  
+}
 
+function show_guid(){
+	$.get("/second_pass", function(data){console.log("Got");});
+}
+
+function get_GUID(){
+	$.post("/get_guid", {"GUID":$('#GUID').val()}) 
+	show_guid();
+}
 
 function siteIDValidation(){
 	console.log("Validating.");
