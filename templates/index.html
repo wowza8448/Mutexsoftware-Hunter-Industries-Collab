@@ -51,16 +51,6 @@
 {IDVal = $('#ID').val(); if (IDVal.length != 80) {alert("Invalid Length of ID");} else	{ $.post("/api/SensorReadings/GetSensorZoneReadingsForSiteId", {"ID":$('#ID').val()}, function(data){$('#id_show').
 html(data); $('#id_show').show();console.log(data);});
                 }	}
-                
-                function get_GUID()
-                {$.post("/get_guid", {"GUID":$('#GUID').val()}) 
-                        show_guid();
-                }
-                
-                function show_guid()
-                {
-                $.get("/second_pass", function(data){console.log("Got");});
-                }
 		
 		</script>
 		
@@ -72,11 +62,7 @@ html(data); $('#id_show').show();console.log(data);});
 </div>
 <button id="search_ID" type="button" onclick="get_ID();">Search ID</button>
 </form></div>
-<!-- <div id="GUID-container">
-                <div id="GUID"><form><lable for="GUID">Site GUID:</label><input type="text" id="GUID" name="GUID" 
-                value=""></div>
-                        <button id="search_PUID" type="button" onclick="get_GUID();">Search GUID</button>
-                        </form></div> -->
+
 </div>
 <center><div id="id_show"  style="display:none"></div></center>
 <footer>
