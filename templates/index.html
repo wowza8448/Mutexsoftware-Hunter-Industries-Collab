@@ -48,18 +48,14 @@
 
                 function get_ID()
 {IDVal = $('#ID').val(); if (IDVal.length != 80) {alert("Invalid Length of ID");} else	{ $.post("/api/SensorReadings/GetSensorZoneReadingsForSiteId", {"ID":$('#ID').val()}, function(data){$('#id_show').
-html(data); $('#id_show').show();console.log(data);});
+html(data); $('#guid_show').hide(); $('#id_show').show();console.log(data);});
                 }	}
                 
                 function get_GUID()
-                {$.post("/get_guid", {"GUID":$('#GUID').val()}) 
-                        show_guid();
-                }
-                
-                function show_guid()
-                {
-                $.get("/second_pass", function(data){console.log("Got");});
-                }
+{ GUIDVal = $('#GUID').val(); $.post("/guid_test", {"GUID":$('#GUID').val()}, function(data){
+			$('#id_show').hide(); $('#guid_show').html(data); $('#guid_show').show();
+                });
+}
 		
 		</script>
 		
@@ -67,26 +63,26 @@ html(data); $('#id_show').show();console.log(data);});
 		
 
 <div id="container">
-<div id="GUID-container">
+<div id="ID-container">
 <div id="GUID"><form><lable for="ID">Site ID:</label><input type="text" id="ID" name="ID">
 </div>
 <button id="search_ID" type="button" onclick="get_ID();">Search ID</button>
 </form></div>
-<!-- <div id="GUID-container">
+<div id="GUID-container">
                 <div id="GUID"><form><lable for="GUID">Site GUID:</label><input type="text" id="GUID" name="GUID" 
                 value=""></div>
-                        <button id="search_PUID" type="button" onclick="get_GUID();">Search GUID</button>
-                        </form></div> -->
+                        <button id="search_GUID" type="button" onclick="get_GUID();">Search GUID</button>
+                        </form></div>
 </div>
 <center><div id="id_show"  style="display:none"></div></center>
+<center><div id="guid_show" style="display:none"></div></center>
 <footer>
 <div class="inner">
 <p>Copyright ©
 <script type="text/javascript">
                 document.write(new Date().getFullYear());
                 </script> Hunter Industries. All rights reserved.</p>
-<p><a href="tel:7605917383">(1) 760-591-7383</a> | <a href="http://www.hunterindustries.com/">www.hunt
-erindustries.com</a></p>
+<p><a href="tel:7605917383">(1) 760-591-7383</a> | <a href="http://www.hunterindustries.com/">www.hunterindustries.com</a></p>
 </div>
 </footer>
 </body>

@@ -2,15 +2,15 @@
     padding: 20px;
 	display: flex;
 }
+#ID-container
+{
+	margin-left: 30px;}
 #GUID-container
 {
 	margin-left: 30px;}
-#PUID-container
-{
-	margin-left: 30px;}
-#GUID {
+#ID {
 	width: 500px !important; }
-#PUID {
+#GUID {
 	width: 500px !important; }
 
  meta.foundation-version {

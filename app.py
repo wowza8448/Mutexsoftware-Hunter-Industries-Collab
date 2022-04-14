@@ -40,7 +40,11 @@ def get_id():
             else:
                 return "Error key not found"
         return "Error invalid key"
-        
+
+@app.route('/guid_test', methods=['POST', 'GET'])
+def get_guid():
+    data = request.form['GUID']
+    return "GUID was called with data" + data
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80)
