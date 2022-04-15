@@ -20,32 +20,13 @@ def index():
 
 @app.route('/api/SensorReadings/GetSensorZoneReadingsForSiteId', methods=['POST', 'GET'])
 def get_id():
-    if request.method == 'POST':
-        global_db_con = get_db()
-        id = request.form['ID']
-        print("Obtained id: " + id)
-        cur = global_db_con.cursor()
-        sql = f"""SELECT * FROM keys WHERE id = '{id}';"""
-        cur.execute(sql)
-        match = cur.fetchall()
-        for row in match:
-            print(row[0])
-        for row in match:
-            if id == row[0]:
-                print("Match was found")
-                print(row[1])
-                data = row[1]
-                cur.close()
-                return data
-            else:
-                return "Error key not found"
-        return "Error invalid key"
+    data = {'firstname':'john', 'lastname':'doe'}
+    return jsonify(data)
 
 @app.route('/guid_test', methods=['POST', 'GET'])
 def get_guid():
-    id = request.form['GUID']
-    print("Obtained GUID: " + id)
-    return "GUID was called with data"
+    data = {'name': 'john', 'temp':'alt'}
+    return jsonify(data)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80)

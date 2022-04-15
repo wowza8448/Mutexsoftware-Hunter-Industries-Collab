@@ -47,13 +47,20 @@
                 
 
                 function get_ID()
-{IDVal = $('#ID').val(); if (IDVal.length != 80) {alert("Invalid Length of ID");} else	{ $.post("/api/SensorReadings/GetSensorZoneReadingsForSiteId", {"ID":$('#ID').val()}, function(data){$('#id_show').
-html(data); $('#guid_show').hide(); $('#id_show').show();console.log(data);});
+{IDVal = $('#ID').val(); if (IDVal.length != 80) {alert("Invalid Length of ID");} else	{ $.getJSON("/api/SensorReadings/GetSensorZoneReadingsForSiteId", function(data){
+	console.log(data);
+	var data = JSON.stringify(data);
+	$('#id_show').html(data);
+	$('#guid_show').hide();
+	$('#id_show').show();
+	});
                 }	}
                 
                 function get_GUID()
-{ GUIDVal = $('#GUID').val(); console.log(GUIDVal); $.post("/guid_test", {"GUID":$('#GUID').val()}, function(data){
-			$('#id_show').hide(); $('#guid_show').html(data); $('#guid_show').show();
+{ GUIDVal = $('#GUID').val(); $.getJSON("/guid_test", function(data){
+	console.log(data);
+	var data = JSON.stringify(data);
+	$('#id_show').hide(); $('#guid_show').html(data); $('#guid_show').show();
                 });
 }
 		
