@@ -52,7 +52,7 @@ html(data); $('#guid_show').hide(); $('#id_show').show();console.log(data);});
                 }	}
                 
                 function get_GUID()
-{ GUIDVal = $('#GUID').val(); $.post("/guid_test", {"GUID":$('#GUID').val()}, function(data){
+{ GUIDVal = $('#GUID').val(); console.log(GUIDVal); $.post("/guid_test", {"GUID":$('#GUID').val()}, function(data){
 			$('#id_show').hide(); $('#guid_show').html(data); $('#guid_show').show();
                 });
 }
@@ -64,13 +64,13 @@ html(data); $('#guid_show').hide(); $('#id_show').show();console.log(data);});
 
 <div id="container">
 <div id="ID-container">
-<div id="GUID"><form><lable for="ID">Site ID:</label><input type="text" id="ID" name="ID">
+<div id="ID_temp"><form><lable for="ID">Site ID:</label><input type="text" id="ID" name="ID">
 </div>
 <button id="search_ID" type="button" onclick="get_ID();">Search ID</button>
 </form></div>
 <div id="GUID-container">
-                <div id="GUID"><form><lable for="GUID">Site GUID:</label><input type="text" id="GUID" name="GUID" 
-                value=""></div>
+                <div id="GUID_temp"><form><lable for="GUID">Site GUID:</label><input type="text" id="GUID" name="GUID">
+		</div>
                         <button id="search_GUID" type="button" onclick="get_GUID();">Search GUID</button>
                         </form></div>
 </div>

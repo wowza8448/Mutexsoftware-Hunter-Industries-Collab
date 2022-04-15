@@ -43,8 +43,9 @@ def get_id():
 
 @app.route('/guid_test', methods=['POST', 'GET'])
 def get_guid():
-    data = request.form['GUID']
-    return "GUID was called with data" + data
+    id = request.form['GUID']
+    print("Obtained GUID: " + id)
+    return "GUID was called with data"
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80)
