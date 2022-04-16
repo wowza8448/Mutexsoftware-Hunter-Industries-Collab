@@ -21,12 +21,11 @@ def index():
 @app.route('/api/SensorReadings/GetSensorZoneReadingsForSiteId', methods=['POST', 'GET'])
 def get_id():
     data = {'firstname':'john', 'lastname':'doe'}
-    return jsonify(data)
+    return data
 
 @app.route('/guid_test', methods=['POST', 'GET'])
 def get_guid():
-    data = {'name': 'john', 'temp':'alt'}
-    return jsonify(data)
+    return {'name': 'john', 'temp':'alt'}
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80)

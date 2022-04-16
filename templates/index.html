@@ -50,6 +50,7 @@
 {IDVal = $('#ID').val(); if (IDVal.length != 80) {alert("Invalid Length of ID");} else	{ $.getJSON("/api/SensorReadings/GetSensorZoneReadingsForSiteId", function(data){
 	console.log(data);
 	var data = JSON.stringify(data);
+	
 	$('#id_show').html(data);
 	$('#guid_show').hide();
 	$('#id_show').show();
@@ -60,7 +61,9 @@
 { GUIDVal = $('#GUID').val(); $.getJSON("/guid_test", function(data){
 	console.log(data);
 	var data = JSON.stringify(data);
-	$('#id_show').hide(); $('#guid_show').html(data); $('#guid_show').show();
+	$('#id_show').hide();
+	$('#guid_show').html(data); 
+	$('#guid_show').show();
                 });
 }
 		
