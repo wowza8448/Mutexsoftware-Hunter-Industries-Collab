@@ -61,6 +61,11 @@
 { GUIDVal = $('#GUID').val(); $.getJSON("/guid_test", function(data){
 	console.log(data);
 	var data = JSON.stringify(data);
+	var data = data.replace(/\\\\\\/g, "\\");
+	var data = data.replace(/{/g, '');
+	var data = data.replace(/,/g, ',<br>');
+	var data = data.replace(/:/g, " : ");
+	var data = data.replace(/}/g, '');
 	$('#id_show').hide();
 	$('#guid_show').html(data); 
 	$('#guid_show').show();
