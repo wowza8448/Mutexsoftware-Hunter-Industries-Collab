@@ -49,8 +49,7 @@
                 function get_ID()
 {IDVal = $('#ID').val(); if (IDVal.length != 80) {alert("Invalid Length of ID");} else	{ $.getJSON("/api/SensorReadings/GetSensorZoneReadingsForSiteId", function(data){
 	console.log(data);
-	var data = JSON.stringify(data);
-	
+	var data = convertData(data);	
 	$('#id_show').html(data);
 	$('#guid_show').hide();
 	$('#id_show').show();
