@@ -97,12 +97,10 @@ function siteIDValidation(){
 	if (siteIDRegEx.test(userString)){
 		console.log("Valid Reg");
 		submitBool = 1;
-		//$('#validMessage').text("Valid Site ID!");
 	}
 	else{
 		console.log("Invalid Reg");
 		submitBool = 0;
-		//$('#validMessage').text("The Site ID is currently invalid. Please ensure the ID is 80 characters, only 0-9 and lowercase a-e.");
 	}
 }
 
