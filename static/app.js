@@ -48,7 +48,8 @@ function getID(){
 		siteIDError()
 	}
 	else{ 
-		$.getJSON("/api/SensorReadings/GetSensorZoneReadingsForSiteId", function(data){
+		let id = $('#ID').val();
+		$.getJSON(`http://localhost:5000/api/SensorReadings/GetSensorZoneReadingsForSiteId/${id}`, function(data){
 			console.log(data);
 			var data = convertData(data);	
 			$('#id_show').html(data);
@@ -65,7 +66,8 @@ function getGUID(){
 		GUIDError()
 	}
 	else{
-		$.getJSON("/guid_test", function(data){
+		let guid = $('#GUID').val();
+		$.getJSON(`http://localhost:5000/api/SensorReadings/GetSensorZoneReadingsForSiteId/${id}`, function(data){
 			console.log(data);
 			var data = convertData(data);
 			$('#id_show').hide();
