@@ -37,13 +37,15 @@ $(document).ready(function(){ $('#menu-icon').click(function(){ console.log('tex
 		  return false;
 		}
 	});
+
+	
 });
 
-function get_ID(){
+function getID(){
 	siteIDValidation()
 	if (submitBool == 0){
-		alert("Invalid Length of ID");
-	} 
+		siteIDError()
+	}
 	else{ 
 		$.getJSON("/api/SensorReadings/GetSensorZoneReadingsForSiteId", function(data){
 			console.log(data);
@@ -55,15 +57,21 @@ function get_ID(){
     }	
 }
 
-function get_GUID(){ 
-	GUIDVal = $('#GUID').val(); 
-	$.getJSON("/guid_test", function(data){
-		console.log(data);
-		var data = convertData(data);
-		$('#id_show').hide();
-		$('#guid_show').html(data); 
-		$('#guid_show').show();
-    });
+function getGUID(){
+	hideAllErrors() 
+	GUIDValidation()
+	if (submitBool == 0){
+		GUIDError()
+	}
+	else{
+		$.getJSON("/guid_test", function(data){
+			console.log(data);
+			var data = convertData(data);
+			$('#id_show').hide();
+			$('#guid_show').html(data); 
+			$('#guid_show').show();
+    	});
+	}
 }
 
 function convertData(data){
@@ -97,7 +105,7 @@ function siteIDValidation(){
 
 function GUIDValidation(){
 	console.log("Validating.");
-	userString = $('#ID').val();
+	userString = $('#GUID').val();
 	var GUIDRegEx = new RegExp('^[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}$');
 	if (GUIDRegEx.test(userString)){
 		console.log("Valid Reg");
@@ -107,4 +115,25 @@ function GUIDValidation(){
 		console.log("Invalid Reg");
 		submitBool = 0;
 	}
+}
+
+function GUIDError() {
+	$('#guid_show').hide();
+	$('#id_show').hide();
+	$('#guid_error').html("Error, invalid guid");
+	$('#guid_error').show();
+}
+
+function siteIDError() {
+	$('#guid_show').hide();
+	$('#id_show').hide();
+	$('#id_error').html("Error, invalid id");
+	$('#id_error').show();
+}
+
+function hideAllErrors() {
+	$('#id_show').hide();
+	$('#guid_show').hide();
+	$('#id_error').hide();
+	$('#guid_error').hide();
 }

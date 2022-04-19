@@ -47,14 +47,16 @@
 <div id="ID-container">
 <div id="ID_temp"><form><lable for="ID">Site ID:</label><input type="text" id="ID" name="ID">
 </div>
-<button id="search_ID" type="button" onclick="get_ID();">Search ID</button>
+<button id="search_ID" type="button" onclick="getID();">Search ID</button>
 </form></div>
 <div id="GUID-container">
                 <div id="GUID_temp"><form><lable for="GUID">Site GUID:</label><input type="text" id="GUID" name="GUID">
 		</div>
-                        <button id="search_GUID" type="button" onclick="get_GUID();">Search GUID</button>
+                        <button id="search_GUID" type="button" onclick="getGUID();">Search GUID</button>
                         </form></div>
 </div>
+<div id="id_error" style="display:none"></div>
+<div id="guid_error" style="display:none"></div>
 <center><div id="id_show"  style="display:none"></div></center>
 <center><div id="guid_show" style="display:none"></div></center>
 <footer>

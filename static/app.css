@@ -6887,4 +6887,22 @@ footer {
 .cd-top.bottom-reached {
   bottom: 16%; }
 
+
+#guid_error {
+  display: inline-block;
+  color: white;
+  background-color: red;
+  text-align: center;
+  margin-left: 100px;
+  padding: 20px;
+}
+
+#id_error{
+  display: inline-block;
+  color: white;
+  background-color: red;
+  text-align: center;
+  margin-left: 30px;
+  padding: 20px;
+}
 /*# sourceMappingURL=app.css.map */
