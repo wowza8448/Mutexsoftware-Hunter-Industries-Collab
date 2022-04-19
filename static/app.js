@@ -42,6 +42,7 @@ $(document).ready(function(){ $('#menu-icon').click(function(){ console.log('tex
 });
 
 function getID(){
+	hideAllErrors() 
 	siteIDValidation()
 	if (submitBool == 0){
 		siteIDError()
@@ -120,14 +121,14 @@ function GUIDValidation(){
 function GUIDError() {
 	$('#guid_show').hide();
 	$('#id_show').hide();
-	$('#guid_error').html("Error, invalid guid");
+	$('#guid_error').html("Error, Invalid GUID.");
 	$('#guid_error').show();
 }
 
 function siteIDError() {
 	$('#guid_show').hide();
 	$('#id_show').hide();
-	$('#id_error').html("Error, invalid id");
+	$('#id_error').html("Error, Invalid Site ID.");
 	$('#id_error').show();
 }
 
