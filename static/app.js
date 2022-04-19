@@ -83,3 +83,56 @@ function siteIDValidation(){
 	}
 }
 
+                
+
+                function get_ID()
+{IDVal = $('#ID').val(); if (IDVal.length != 80) {id_error();} else	{ $.getJSON("/api/SensorReadings/GetSensorZoneReadingsForSiteId", function(data){
+    $('#id_error').hide();
+    $('#guid_error').hide();
+    $('#guid_show').hide();
+    console.log(data);
+	var data = convertData(data);	
+    $('#id_show').html(data);
+	$('#id_show').show();
+	});
+                }	}
+
+        function id_error() {
+            $('#guid_show').hide();
+            $('#id_show').hide();
+            $('#id_error').html("Error, invalid id");
+            $('#id_error').show();
+        }
+
+                function get_GUID()
+{ GUIDVal = $('#GUID').val(); $.getJSON("/guid_test", function(data){
+    $('#id_error').hide();
+    $('#guid_error').hide();
+    console.log(data);
+	var data = convertData(data);
+	$('#id_show').hide();
+	$('#guid_show').html(data); 
+	$('#guid_show').show();
+                });
+}
+        function guid_error() {
+            $('#guid_show').hide();
+            $('#id_show').hide();
+            $('#guid_error').html("Error, invalid guid");
+            $('#guid_error').show();
+        }
+
+    function convertData(data)
+	{
+	var data = JSON.stringify(data);
+	var data = data.replace(/\\\\\\/g, "\\");
+	var data = data.replace(/https : /g, "https:");
+	var data = data.replace(/{/g, '');
+	var data = data.replace(/,/g, ',<br>');
+	var data = data.replace(/:/g, " : ");
+	var data = data.replace(/https : /g, "https:");
+	var data = data.replace(/}/g, '');
+	console.log("Data converted");
+	return data;
+	}
+		
