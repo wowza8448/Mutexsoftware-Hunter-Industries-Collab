@@ -67,7 +67,7 @@ function getGUID(){
 	}
 	else{
 		let guid = $('#GUID').val();
-		$.getJSON(`http://localhost:5000/api/SensorReadings/GetSensorZoneReadingsForSiteId/${id}`, function(data){
+		$.getJSON(`http://localhost:5000/api/SensorReadings/GetSensorZoneReadingsForSiteId/${guid}`, function(data){
 			console.log(data);
 			var data = convertData(data);
 			$('#id_show').hide();
