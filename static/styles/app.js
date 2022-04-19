@@ -1,3 +1,5 @@
+var submitBool = 0;
+
 $(document).ready(function(){ $('#menu-icon').click(function(){ console.log('text0'); $('body').toggleClass('menu-open')
 	});
 	//scroll animation
@@ -28,4 +30,81 @@ $(document).ready(function(){ $('#menu-icon').click(function(){ console.log('tex
 		 	}, scroll_top_duration
 		);
 	});
+
+	$(window).keydown(function(event){
+		if(event.keyCode == 13) {
+		  event.preventDefault();
+		  return false;
+		}
+	});
 });
+
+function get_ID(){
+	siteIDValidation()
+	if (submitBool == 0){
+		alert("Invalid Length of ID");
+	} 
+	else{ 
+		$.getJSON("/api/SensorReadings/GetSensorZoneReadingsForSiteId", function(data){
+			console.log(data);
+			var data = convertData(data);	
+			$('#id_show').html(data);
+			$('#guid_show').hide();
+			$('#id_show').show();
+		});
+    }	
+}
+
+function get_GUID(){ 
+	GUIDVal = $('#GUID').val(); 
+	$.getJSON("/guid_test", function(data){
+		console.log(data);
+		var data = convertData(data);
+		$('#id_show').hide();
+		$('#guid_show').html(data); 
+		$('#guid_show').show();
+    });
+}
+
+function convertData(data){
+	var data = JSON.stringify(data);
+	var data = data.replace(/\\\\\\/g, "\\");
+	var data = data.replace(/https : /g, "https:");
+	var data = data.replace(/{/g, '');
+	var data = data.replace(/,/g, ',<br>');
+	var data = data.replace(/:/g, " : ");
+	var data = data.replace(/https : /g, "https:");
+	var data = data.replace(/}/g, '');
+	console.log("Data converted");
+	return data;
+}
+
+function siteIDValidation(){
+	console.log("Validating.");
+	userString = $('#ID').val();
+	var siteIDRegEx = new RegExp('^[0-9a-fA-F]{80}$');
+	if (siteIDRegEx.test(userString)){
+		console.log("Valid Reg");
+		submitBool = 1;
+		//$('#validMessage').text("Valid Site ID!");
+	}
+	else{
+		console.log("Invalid Reg");
+		submitBool = 0;
+		//$('#validMessage').text("The Site ID is currently invalid. Please ensure the ID is 80 characters, only 0-9 and lowercase a-e.");
+	}
+}
+
+function GUIDValidation(){
+	console.log("Validating.");
+	userString = $('#ID').val();
+	var GUIDRegEx = new RegExp('^[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}$');
+	if (GUIDRegEx.test(userString)){
+		console.log("Valid Reg");
+		submitBool = 1;
+	}
+	else{
+		console.log("Invalid Reg");
+		submitBool = 0;
+	}
+}
