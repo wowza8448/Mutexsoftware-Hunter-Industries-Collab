@@ -42,29 +42,82 @@
     <nav>
 <a href="">Home</a>
 <a href="">TBD</a>
-
     </nav>
 	<script type="text/javascript">
                 
 
                 function get_ID()
-{IDVal = $('#ID').val(); if (IDVal.length != 80) {alert("Invalid Length of ID");} else	{ $.post("/api/SensorReadings/GetSensorZoneReadingsForSiteId", {"ID":$('#ID').val()}, function(data){$('#id_show').
-html(data); $('#id_show').show();console.log(data);});
+{IDVal = $('#ID').val(); if (IDVal.length != 80) {id_error();} else	{ $.getJSON("/api/SensorReadings/GetSensorZoneReadingsForSiteId", function(data){
+    $('#id_error').hide();
+    $('#guid_error').hide();
+    $('#guid_show').hide();
+    console.log(data);
+	var data = convertData(data);	
+    $('#id_show').html(data);
+	$('#id_show').show();
+	});
                 }	}
+
+        function id_error() {
+            $('#guid_show').hide();
+            $('#id_show').hide();
+            $('#id_error').html("Error, invalid id");
+            $('#id_error').show();
+        }
+
+                function get_GUID()
+{ GUIDVal = $('#GUID').val(); $.getJSON("/guid_test", function(data){
+    $('#id_error').hide();
+    $('#guid_error').hide();
+    console.log(data);
+	var data = convertData(data);
+	$('#id_show').hide();
+	$('#guid_show').html(data); 
+	$('#guid_show').show();
+                });
+}
+        function guid_error() {
+            $('#guid_show').hide();
+            $('#id_show').hide();
+            $('#guid_error').html("Error, invalid guid");
+            $('#guid_error').show();
+        }
+
+    function convertData(data)
+	{
+	var data = JSON.stringify(data);
+	var data = data.replace(/\\\\\\/g, "\\");
+	var data = data.replace(/https : /g, "https:");
+	var data = data.replace(/{/g, '');
+	var data = data.replace(/,/g, ',<br>');
+	var data = data.replace(/:/g, " : ");
+	var data = data.replace(/https : /g, "https:");
+	var data = data.replace(/}/g, '');
+	console.log("Data converted");
+	return data;
+	}
 		
 		</script>
 		
-
+		
+		
 
 <div id="container">
-<div id="GUID-container">
-<div id="GUID"><form><lable for="ID">Site ID:</label><input type="text" id="ID" name="ID">
+<div id="ID-container">
+<div id="ID_temp"><form><lable for="ID">Site ID:</label><input type="text" id="ID" name="ID">
 </div>
 <button id="search_ID" type="button" onclick="get_ID();">Search ID</button>
 </form></div>
-
+<div id="GUID-container">
+                <div id="GUID_temp"><form><lable for="GUID">Site GUID:</label><input type="text" id="GUID" name="GUID">
+		</div>
+                        <button id="search_GUID" type="button" onclick="get_GUID();">Search GUID</button>
+                        </form></div>
 </div>
+<div id="id_error" style="display:none"></div>
+<div id="guid_error" style="display:none"></div>
 <center><div id="id_show"  style="display:none"></div></center>
+<center><div id="guid_show" style="display:none"></div></center>
 <footer>
 <div class="inner">
 <p>Copyright ©
