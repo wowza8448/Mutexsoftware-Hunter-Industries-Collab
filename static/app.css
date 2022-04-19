@@ -1,3 +1,20 @@
+#guid_error {
+    display: inline-block;
+    color: white;
+    background-color: red;
+    text-align: center;
+    margin-left: 100px;
+    padding: 20px;
+}
+
+#id_error{
+    display: inline-block;
+    color: white;
+    background-color: red;
+    text-align: center;
+    margin-left: 30px;
+    padding: 20px;
+}
 #container {
     padding: 20px;
 	display: flex;
