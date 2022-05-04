@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<head>
+  <title>Pilot Support Site</title>
+  <link rel="stylesheet" href="app.component.scss"/>
+  <script src="app.component.ts"></script>
+  
+</head>
+<body>
+<br>
+<br>
+<br>
+
+<header>
+  <div class="inner">
+    <div id="menu-icon" class="c-hamburger c-hamburger--htx">
+      <span>toggle menu</span>
+    </div>
+    <svg class="hlogo" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 556.6 126.3" style="enable-background:new 0 0 556.6 126.3;" xml:space="preserve">
+      <path class="st0" d="M543,26.6v-3.9h2.7c1.2,0,2.7,0.4,2.7,2c0,2-1.6,2-3.1,2L543,26.6L543,26.6L543,26.6z M543,28.2h2.3l3.5,5.5h2.3l-3.9-5.5c2-0.4,3.5-1.2,3.5-3.5s-1.6-3.5-4.7-3.5h-5v12.9h2L543,28.2L543,28.2z M536.3,27.4c0-5.5,3.9-9.4,9-9.4s9,3.9,9,9.4s-3.9,9.4-9,9.4C540.3,36.8,536.3,32.9,536.3,27.4 M545.3,38.7c6.3,0,11.3-4.7,11.3-11.3c0-6.3-5.1-11.3-11.3-11.3c-6.3,0-11.3,4.7-11.3,11.3S539.5,38.7,545.3,38.7" />
+      <path class="st0" d="M164.2,125.9V36h39.1v64.1c-1.2,27-28.9,25.8-28.9,25.8H164.2z" />
+      <path class="st0" d="M155.6,125.9V36h-39.1v64.1c1.2,27,28.9,25.8,28.9,25.8H155.6z" />
+      <rect x="211.1" y="36" class="st0" width="39.1" height="89.9" />
+      <path class="st0" d="M489.8,54.7c0-10.2,8.2-18.4,18.8-18.4c10.2,0,18.8,8.2,18.8,18.4s-8.2,18.4-18.8,18.4C498,73.5,489.8,64.9,489.8,54.7" />
+      <rect x="447.6" y="36" class="st0" width="38.7" height="89.9" />
+      <polygon class="st0" points="306.9,125.9 306.9,46.5 293.2,46.5 344.8,0.4 344.8,36.8 360.4,36.8 360.4,46.5 344.8,46.5 344.8,125.9 " />
+      <path class="st0" d="M258.4,36v89.9h39.5V62.2C296.7,35.2,269,36,269,36H258.4z" />
+      <path class="st0" d="M395.2,126.3c-23.8,0-43.8-20.3-43.8-45.7c0-25,18.4-44.6,43-45.7v80.9c9.8,0.8,31.7-2.3,47.7-18.8v10.9C435.1,115.7,419.4,127.1,395.2,126.3" />
+      <path class="st0" d="M400.7,34.8v46.5h41.4C443.4,58.3,431.9,35.6,400.7,34.8" />
+      <polygon class="st0" points="59.4,0 59.4,51.2 48.5,51.2 48.5,0 0,0 0,125.9 48.5,125.9 48.5,63.7 59.4,63.7 59.4,125.9 108.2,125.9 108.2,0 " />
+    </svg>
+    <p class="logo-title">Pilot Support Site</p>
+  </div>
+</header>
+
+<nav>
+  <a href="">Home</a>
+  <a href="">TBD</a>
+</nav>
+
+<div id="siteID_error" *ngIf="siteIDErrorToggle">{{siteIDErrorString}}</div>
+<ng-template #elseblock><div id="siteID_error" style="display:none"></div></ng-template>
+<div id="GUID_error" *ngIf="GUIDErrorToggle">{{GUIDErrorString}}</div>
+<ng-template #elseblock><div id="GUID_error" style="display:none"></div></ng-template>
+<div id="container">
+  <div id="ID-container">
+    <div id="ID_temp">
+      <form>Site ID:<input [(ngModel)]="SiteID" #ctrl="ngModel" required type="text" id="SiteID" name="SiteID">
+      <button id="search_ID" type="button" (click)="getSiteID()">Search Site ID</button>
+      </form>
+    </div>
+  </div>
+  <div id="GUID-container">
+    <div id="GUID_temp">
+      <form>Site GUID:<input [(ngModel)]="GUID" #ctrl="ngModel" required type="text" id="GUID" name="GUID">
+      <button id="search_GUID" type="button" (click)="getGUID()">Search GUID</button>
+      </form>
+    </div>
+  </div>
+</div>
+<div id="siteID_show" *ngIf="siteIDToggle"><pre> {{convertedSiteIDData}} </pre></div>
+<ng-template #elseblock><div id="siteID_show" style="display:none"></div></ng-template>
+<div id="GUID_show" *ngIf="GUIDToggle"><pre> {{convertedGUIDData}} </pre></div>
+<ng-template #elseblock><div id="GUID_show" style="display:none"></div></ng-template>
+<footer>
+  <div class="inner">
+    <p>Copyright ©
+      <script type="text/javascript">document.write(new Date().getFullYear());</script> 
+      Hunter Industries. All rights reserved.
+    </p>
+    <p>
+      <a href="tel:7605917383">(1) 760-591-7383</a> | 
+      <a href="http://www.hunterindustries.com/">www.hunterindustries.com</a>
+    </p>
+  </div>
+</footer>
+
+</body>
