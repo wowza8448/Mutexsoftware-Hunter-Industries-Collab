@@ -51,7 +51,13 @@ export class AppComponent {
   public getGUIDJSON(ID : string) : Observable<any> {
     return this.http.get(this.guIDURLBase2, {responseType: 'json'});
   }
-  
+
+    clear() {
+    console.log("Cleared page!");
+    this.hideAllErrors();
+    this.SiteID = ''
+    this.GUID = ''
+    }
   /**
    * Hides any errors displayed on site in to prepare for new data display,
    * validates user input on the Site ID search string, and on successful Site ID validation,
