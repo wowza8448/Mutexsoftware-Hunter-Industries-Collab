@@ -16,23 +16,17 @@
     margin: 1em 0;
     }
 
-  #GUID_error {
-    margin-left: 45%;
-    display: inline-block;
-    color: white;
-    background-color: red;
-    text-align: center;
-    padding: 10px;
-  }
+ #GUID_error {
+  display: inline-block;
+  background-color: red;
+  width: 100% !important;
+}
 
-  #siteID_error {
-    margin-left: 45%;
-    display: inline-block;
-    color: white;
-    background-color: red;
-    text-align: center;
-    padding: 10px;
-  }
+#siteID_error {
+  display: inline-block;
+  background-color: red;
+  width: 100% !important;
+}
 
   #container {
      text-align: center;
