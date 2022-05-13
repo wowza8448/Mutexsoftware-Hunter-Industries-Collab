@@ -19,19 +19,21 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'SupportSiteAngular'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('SupportSiteAngular');
-  });
-
-  it('should disable display', () => {
+  /**
+   * 
+   * hideAllErrors() functionality test
+   */
+  it('should disable info and error display on hideAllErrors function call', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     app.hideAllErrors();
     expect(app.siteIDErrorToggle && app.GUIDErrorToggle).toEqual(false);
   });
 
+  /**
+   * 
+   * siteIDError() functionality test
+   */
   it('should display errors on incorrect site ID', () => {      
     const fixture = TestBed.createComponent(AppComponent);    
     const app = fixture.componentInstance;     
@@ -40,7 +42,11 @@ describe('AppComponent', () => {
     expect(app.siteIDErrorToggle).toEqual(true);   
   });
 
-  it(`should display errors on incorrecct GUID`, () => {
+  /**
+   * 
+   * GUIDError() functionality test
+   */
+  it(`should display errors on incorrect GUID`, () => {
     const fixture = TestBed.createComponent(AppComponent);    
     const app = fixture.componentInstance;
     app.GUID = `Incorrect String`
@@ -48,7 +54,11 @@ describe('AppComponent', () => {
     expect(app.GUIDErrorToggle).toEqual(true);
   });
 
-  it(`should set submitBool to 1 when GUID entry is the correct length`, () => {
+  /**
+   * 
+   * GUID input validation testing
+   */
+  it(`should pass GUID validation when GUID entry is the correct length`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     app.GUID = "195350b6-2422-4290-8fe7-f56890fe5b53";
@@ -56,7 +66,7 @@ describe('AppComponent', () => {
     expect(app.submitBool).toBe(1);
   });
   
-  it(`should set submitBool to 0 when GUID entry is too short`, () => {
+  it(`should fail GUID validation when GUID entry is too short`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     app.GUID = "195350b6-2422-4290-8fe7-f6890fe5b5";
@@ -64,7 +74,7 @@ describe('AppComponent', () => {
     expect(app.submitBool).toBe(0);
   });
 
-  it(`should set submitBool to 0 when GUID entry is too long`, () => {
+  it(`should fail GUID validation when GUID entry is too long`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     app.GUID = "195350b6-2422-4290-81fe7-f56890fe5b53a23";
@@ -72,7 +82,7 @@ describe('AppComponent', () => {
     expect(app.submitBool).toBe(0);
   });
 
-  it(`should set submitBool to 0 when GUID entry is missing hyphens`, () => {
+  it(`should fail GUID validation when GUID entry is missing hyphens`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     app.GUID = "195350b6242242908fe7f56890fe5b51";
@@ -80,7 +90,7 @@ describe('AppComponent', () => {
     expect(app.submitBool).toBe(0);
   });
 
-  it(`should set submitBool to 0 when GUID entry contains invalid characters`, () => {
+  it(`should fail GUID validation when GUID entry contains invalid characters`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     app.GUID = "19535ab6-2422-4290-8fe7-f5689@fe5b53";
@@ -88,7 +98,7 @@ describe('AppComponent', () => {
     expect(app.submitBool).toBe(0);
   });
 
-  it(`should set submitBool to 0 when GUID entry is empty`, () => {
+  it(`should fail GUID validation when GUID entry is empty`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     app.GUID = "";
@@ -96,7 +106,11 @@ describe('AppComponent', () => {
     expect(app.submitBool).toBe(0);
   });
 
-  it(`should set submitBool to 1 when siteID is the correct length`, () => {
+  /**
+   * 
+   * Site ID input validation testing
+   */
+  it(`should pass Site ID validation when siteID is the correct length`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     app.SiteID = "a8c4d5f97ca0f493f79adbac669dad5c3a54d89f8b04794a609d853f177ec850fdf7e6121bbbee34";
@@ -104,7 +118,7 @@ describe('AppComponent', () => {
     expect(app.submitBool).toBe(1);
   });
 
-  it(`should set submitBool to 0 when siteID is too short`, () => {
+  it(`should fail Site ID validation when siteID is too short`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     app.SiteID = "a8c4d5f97ca0f493f79adbac669dada54d898b04794a609d853f177ec850fdf7e6121bbbee34";
@@ -112,7 +126,7 @@ describe('AppComponent', () => {
     expect(app.submitBool).toBe(0);
   });
 
-  it(`should set submitBool to 0 when siteID is too long`, () => {
+  it(`should fail Site ID validation when siteID is too long`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     app.SiteID = "a8c4d5f97ca0f493f79adbac669dad5c3a54d89a3f8b04794a609d853f177ec850fdf7e6121bbbee34";
@@ -120,7 +134,7 @@ describe('AppComponent', () => {
     expect(app.submitBool).toBe(0);
   });
 
-  it(`should set submitBool to 0 when siteID contains invalid characters`, () => {
+  it(`should fail Site ID validation when siteID contains invalid characters`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     app.SiteID = "a8c4d5f97ca0f493f79adbac669dad@c3a54d89f8b-4794a609$853f177ec850fdf7e6121bbbee34";
@@ -128,18 +142,11 @@ describe('AppComponent', () => {
     expect(app.submitBool).toBe(0);
   });
 
-  it(`should set submitBool to 0 when siteID is empty`, () => {
+  it(`should fail Site ID validation when siteID is empty`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     app.SiteID = "";
     app.siteIDValidation();
     expect(app.submitBool).toBe(0);
   });
-
-  // it('should render title', () => {
-  //   const fixture = TestBed.createComponent(AppComponent);
-  //   fixture.detectChanges();
-  //   const compiled = fixture.nativeElement as HTMLElement;
-  //   expect(compiled.querySelector('.content span')?.textContent).toContain('SupportSiteAngular app is running!');
-  // });
 });
