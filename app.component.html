@@ -37,14 +37,12 @@
   <a href="">TBD</a>
 </nav>
 <button id="clear" (click)="clear()">Reset</button>
-<div id="siteID_error" *ngIf="siteIDErrorToggle">{{siteIDErrorString}}</div>
-<ng-template #elseblock><div id="siteID_error" style="display:none"></div></ng-template>
-<div id="GUID_error" *ngIf="GUIDErrorToggle">{{GUIDErrorString}}</div>
-<ng-template #elseblock><div id="GUID_error" style="display:none"></div></ng-template>
 <div id="container">
   <div id="ID-container">
     <div id="ID_temp">
       <form (keydown.enter)="$event.preventDefault()">Site ID:<input [(ngModel)]="SiteID" #ctrl="ngModel" required type="text" id="SiteID" name="SiteID">
+        <div id="siteID_error" *ngIf="siteIDErrorToggle">{{siteIDErrorString}}</div>
+        <ng-template #elseblock><div id="siteID_error" style="display:none"></div></ng-template>
       <button id="search_ID" type="button" (click)="getSiteID()">Search Site ID</button>
       </form>
     </div>
@@ -52,6 +50,8 @@
   <div id="GUID-container">
     <div id="GUID_temp">
       <form (keydown.enter)="$event.preventDefault()">Site GUID:<input [(ngModel)]="GUID" #ctrl="ngModel" required type="text" id="GUID" name="GUID">
+        <div id="GUID_error" *ngIf="GUIDErrorToggle">{{GUIDErrorString}}</div>
+        <ng-template #elseblock><div id="GUID_error" style="display:none"></div></ng-template>
       <button id="search_GUID" type="button" (click)="getGUID()">Search GUID</button>
       </form>
     </div>
