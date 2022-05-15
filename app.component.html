@@ -57,11 +57,13 @@
     </div>
   </div>
 </div>
+<div id="displayContainer">
 <div id="siteID_show" *ngIf="siteIDToggle"><pre> {{convertedSiteIDData}} </pre></div>
 <ng-template #elseblock><div id="siteID_show" style="display:none"></div></ng-template>
 <div id="GUID_show" *ngIf="GUIDToggle"><pre> {{convertedGUIDData}} </pre></div>
 <ng-template #elseblock><div id="GUID_show" style="display:none"></div></ng-template>
-<footer>
+</div>
+<footer id="footer">
   <div class="inner">
     <p>Copyright ©
       <script type="text/javascript">document.write(new Date().getFullYear());</script> 

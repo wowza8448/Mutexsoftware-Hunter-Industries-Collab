@@ -149,4 +149,32 @@ describe('AppComponent', () => {
     app.siteIDValidation();
     expect(app.submitBool).toBe(0);
   });
+
+  /**
+  * Test of the convertData function, that converts the triple-stringified 
+  * database JSON into a displayable string.
+  * 
+  * Only the body key in nest one and the response key in nest two are required to simulate the database return.
+  */
+  it(`should translate nested stringified JSON into raw database data for display`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    var resultString = "";
+  
+    var JSONString : string = "\{\"Testing1\" : \"Test1\",\"Testing2\" : \"Test2\",\"Testing3\" : \"Test3\",\"Testing4\" : \"Test4\",\"Testing5\" : \"Test5\"}"
+    var JSONData  = JSON.parse(JSONString);
+    JSONData = JSON.stringify(JSON.stringify(JSONData));
+      
+    var nest1 = "\{\"body\" : " + JSONData + "}"
+    var nest1Data = JSON.parse(nest1);
+    nest1Data = JSON.stringify(JSON.stringify(nest1Data));
+      
+    var nest2 = "\{\"response\" : " + nest1Data + "}"
+    var nest2Data = JSON.parse(nest2);
+      
+    resultString = app.convertData(nest2Data)
+      
+    var stringCompare = resultString === ""
+    expect(stringCompare).toBeFalse();
+  });
 });

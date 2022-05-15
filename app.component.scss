@@ -1,54 +1,71 @@
-  #siteID_show {
-    border-style: outset;
-    background-color: #f8f8ff;
-  }
+#siteID_show, #GUID_show {
+  border-style: outset;
+  background-color: #f8f8ff;
+  width: 80%;
+  padding-left: 60px;
+  padding-right: 60px;
+  overflow-x: scroll;
+}
 
-  #GUID_show {
-    border-style: outset;
-    background-color: #f8f8ff;
-  }  
+#footer {
+  position: relative;
+  top: 50px;
+}
+  
+#displayContainer {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  position: relative;
+  top: 50px;
+}
 
-  pre {
-    display: block;
-    font-family: monospace;
-    white-space: pre;
-    white-space: pre-wrap;
-    margin: 1em 0;
-    }
+#search_ID, #search_GUID{
+  position: relative;
+  top: 20px;
+}
 
- #GUID_error {
+pre {
+  display: block;
+  font-family: monospace;
+  white-space: pre;
+  white-space: pre-wrap;
+  margin: 1em 0;
+}
+
+#GUID_error {
   display: inline-block;
-  background-color: red;
+  background-color: #f44a4aa3;
   width: 100% !important;
 }
 
 #siteID_error {
   display: inline-block;
-  background-color: red;
+  background-color: #f44a4aa3;
   width: 100% !important;
 }
 
-  #container {
-     text-align: center;
-     display: flex;
-  }
+#container {
+    text-align: center;
+    display: flex;
+}
 
-  #ID-container {
-    width: 50%;
-    margin-left: 10%;
-  }
+#ID-container {
+  width: 50%;
+  margin-left: 10%;
+}
 
-  #GUID-container {
-    width: 50%;
-  }
+#GUID-container {
+  width: 50%;
+}
 
-  #ID_temp {
-    width: 80% !important;
-  }
+#ID_temp {
+  width: 80% !important;
+}
 
-  #GUID_temp {
-    width: 80% !important;
-  }
+#GUID_temp {
+  width: 80% !important;
+}
 
  meta.foundation-version {
   font-family: "/5.5.3/"; }

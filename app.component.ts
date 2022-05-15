@@ -42,7 +42,6 @@ export class AppComponent {
     return this.http.get(this.siteIDURLBase2, {responseType: 'json'});
   }
 
-  //
   /**
    * Sends a GET request to the URL contained in guIDURLBase, with the user input GUID string appeneded to the url
    * @param ID 
@@ -52,12 +51,16 @@ export class AppComponent {
     return this.http.get(this.guIDURLBase2, {responseType: 'json'});
   }
 
-    clear() {
+  /**
+   * Clears all input variables, all display output, and all errors currently displayed
+   */
+  clear() {
     console.log("Cleared page!");
     this.hideAllErrors();
     this.SiteID = ''
     this.GUID = ''
-    }
+  }
+
   /**
    * Hides any errors displayed on site in to prepare for new data display,
    * validates user input on the Site ID search string, and on successful Site ID validation,
@@ -127,9 +130,10 @@ export class AppComponent {
   
   /**
    * Validates the current user Site ID search input value against the standard Site ID format.
-   * Sets submission flag to one on a successful format validation, and zero on a failure
+   * Sets submission flag to one on a successful format validation, and zero on a failure.
+   * Also modifies the error message based on error present in userString.
    */
-  siteIDValidation(){
+   siteIDValidation(){
     console.log("Validating.");
     var userString = this.SiteID;
     var siteIDRegEx = new RegExp('^[0-9a-fA-F]{80}$');
@@ -140,12 +144,25 @@ export class AppComponent {
     else{
       console.log("Invalid Reg");
       this.submitBool = 0;
+      if (userString.length > 80){
+        this.siteIDErrorString = "Site ID too long.";
+      }
+      else if (userString.length < 80 && userString.length >= 1){
+        this.siteIDErrorString = "Site ID too short.";
+      }
+      else if (userString == ''){
+        this.siteIDErrorString = "Please enter a Site ID value.";
+      }
+      else{
+        this.siteIDErrorString = "Non-hex value detected in Site ID.";
+      }
     }
   }
   
   /**
    * Validates the current user GUID search input value against the standard GUID format.
-   * Sets submission flag to one on a successful format validation, and zero on a failure
+   * Sets submission flag to one on a successful format validation, and zero on a failure.
+   * Also modifies the error message based on error present in userString.
    */
   GUIDValidation(){
     console.log("Validating.");
@@ -158,6 +175,18 @@ export class AppComponent {
     else{
       console.log("Invalid Reg");
       this.submitBool = 0;
+      if (userString.length > 36){
+        this.GUIDErrorString = "GUID too long.";
+      }
+      else if (userString.length < 36 && userString.length >= 1){
+        this.GUIDErrorString = "GUID too short.";
+      }
+      else if (userString == ''){
+        this.GUIDErrorString = "Please enter a GUID value.";
+      }
+      else{
+        this.GUIDErrorString = "Non-hex value detected in GUID.";
+      }
     }
   }
 
