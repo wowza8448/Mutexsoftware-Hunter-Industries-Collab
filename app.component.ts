@@ -22,9 +22,7 @@ export class AppComponent {
   GUIDErrorString = "Error, Invalid GUID.";
   siteIDErrorString = "Error, Invalid Site ID.";
   siteIDURLBase = 'http://localhost:5000/api/SensorReadings/GetSensorZoneReadingsForSiteId'
-  siteIDURLBase2 = 'http://192.168.12.164/api/SensorReadings/GetSensorZoneReadingsForSiteId'
   guIDURLBase = 'http://localhost:5000/api/SensorReadings/GetSensorZoneReadingsForSiteGuid'
-  guIDURLBase2 = 'http://192.168.12.164/api/SensorReadings/GetSensorZoneReadingsForSiteGuid'
   
   /**
    * constructor for http client
@@ -39,7 +37,7 @@ export class AppComponent {
    * @returns JSON data served at the site ID URL from the Hunter database
    */
   public getSiteIDJSON(ID: string): Observable<any> {
-    return this.http.get(this.siteIDURLBase2, {responseType: 'json'});
+    return this.http.get(this.siteIDURLBase + ID, {responseType: 'json'});
   }
 
   /**
@@ -48,7 +46,7 @@ export class AppComponent {
    * @returns JSON data served at the GUID URL from the Hunter database
    */
   public getGUIDJSON(ID : string) : Observable<any> {
-    return this.http.get(this.guIDURLBase2, {responseType: 'json'});
+    return this.http.get(this.guIDURLBase + ID, {responseType: 'json'});
   }
 
   /**
